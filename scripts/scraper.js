@@ -1,12 +1,33 @@
-const fs = require("fs");
+name: SPMB Scraper
 
-const data = {
-  last_update: new Date().toISOString(),
-  status: "running",
-  test: true
-};
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"
 
-fs.mkdirSync("data", { recursive: true });
-fs.writeFileSync("data/latest.json", JSON.stringify(data, null, 2));
+permissions:
+  contents: write
 
-console.log("latest.json generated");
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Scraper
+        run: node scripts/scraper.js
+
+      - name: Commit Data
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git add data/latest.json
+
+          git diff --staged --quiet || git commit -m "Update data"
+          git push
