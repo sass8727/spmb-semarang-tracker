@@ -1,308 +1,307 @@
 {
-  "updated_at": "2026-06-23T06:23:49.666Z",
+  "updated_at": "2026-06-23T06:35:05.518Z",
   "jalur": "Prestasi",
-  "jumlah_sekolah": 43,
   "ranking": [
     {
       "sekolah_id": 302,
       "sekolah": "SMP NEGERI 2",
-      "total": 50,
+      "peserta": 165,
       "tertinggi": 118.6,
-      "terendah": 112.18
+      "cutoff": 95.54
     },
     {
       "sekolah_id": 301,
       "sekolah": "SMP NEGERI 1",
-      "total": 50,
+      "peserta": 163,
       "tertinggi": 117.73,
-      "terendah": 111.31
+      "cutoff": 91.69
     },
     {
       "sekolah_id": 321,
       "sekolah": "SMP NEGERI 21",
-      "total": 50,
+      "peserta": 147,
       "tertinggi": 115.58,
-      "terendah": 109.54
+      "cutoff": 80.28
     },
     {
       "sekolah_id": 305,
       "sekolah": "SMP NEGERI 5",
-      "total": 50,
+      "peserta": 133,
       "tertinggi": 115.4,
-      "terendah": 108.3
+      "cutoff": 96.56
     },
     {
       "sekolah_id": 318,
       "sekolah": "SMP NEGERI 18",
-      "total": 50,
+      "peserta": 126,
       "tertinggi": 115.12,
-      "terendah": 106.54
+      "cutoff": 87.76
     },
     {
       "sekolah_id": 309,
       "sekolah": "SMP NEGERI 9",
-      "total": 50,
+      "peserta": 163,
       "tertinggi": 114.56,
-      "terendah": 109.16
+      "cutoff": 88.14
     },
     {
       "sekolah_id": 322,
       "sekolah": "SMP NEGERI 22",
-      "total": 50,
+      "peserta": 109,
       "tertinggi": 114.1,
-      "terendah": 105.18
+      "cutoff": 84.98
     },
     {
       "sekolah_id": 303,
       "sekolah": "SMP NEGERI 3",
-      "total": 50,
+      "peserta": 104,
       "tertinggi": 112.74,
-      "terendah": 106.56
+      "cutoff": 93.88
     },
     {
       "sekolah_id": 316,
       "sekolah": "SMP NEGERI 16",
-      "total": 50,
+      "peserta": 131,
       "tertinggi": 112.56,
-      "terendah": 104.88
+      "cutoff": 81.94
     },
     {
       "sekolah_id": 308,
       "sekolah": "SMP NEGERI 8",
-      "total": 50,
+      "peserta": 98,
       "tertinggi": 112.4,
-      "terendah": 102.15
+      "cutoff": 87.65
     },
     {
       "sekolah_id": 307,
       "sekolah": "SMP NEGERI 7",
-      "total": 50,
+      "peserta": 70,
       "tertinggi": 111.95,
-      "terendah": 102.24
+      "cutoff": 88.06
     },
     {
       "sekolah_id": 323,
       "sekolah": "SMP NEGERI 23",
-      "total": 50,
+      "peserta": 98,
       "tertinggi": 111.94,
-      "terendah": 104.5
+      "cutoff": 90.2
     },
     {
       "sekolah_id": 343,
       "sekolah": "SMP NEGERI 43",
-      "total": 50,
+      "peserta": 82,
       "tertinggi": 111.82,
-      "terendah": 101.06
+      "cutoff": 85.52
     },
     {
       "sekolah_id": 329,
       "sekolah": "SMP NEGERI 29",
-      "total": 50,
+      "peserta": 126,
       "tertinggi": 111.8,
-      "terendah": 105.18
+      "cutoff": 85.14
     },
     {
       "sekolah_id": 306,
       "sekolah": "SMP NEGERI 6",
-      "total": 50,
+      "peserta": 103,
       "tertinggi": 111.52,
-      "terendah": 104.28
+      "cutoff": 72.94
     },
     {
       "sekolah_id": 320,
       "sekolah": "SMP NEGERI 20",
-      "total": 50,
+      "peserta": 102,
       "tertinggi": 111.12,
-      "terendah": 97.8
+      "cutoff": 78.92
     },
     {
       "sekolah_id": 328,
       "sekolah": "SMP NEGERI 28",
-      "total": 50,
+      "peserta": 89,
       "tertinggi": 111.06,
-      "terendah": 94.96
+      "cutoff": 80.22
     },
     {
       "sekolah_id": 312,
       "sekolah": "SMP NEGERI 12",
-      "total": 50,
+      "peserta": 107,
       "tertinggi": 110.92,
-      "terendah": 103.86
+      "cutoff": 77.16
     },
     {
       "sekolah_id": 315,
       "sekolah": "SMP NEGERI 15",
-      "total": 50,
+      "peserta": 141,
       "tertinggi": 110.52,
-      "terendah": 105.58
+      "cutoff": 82.92
     },
     {
       "sekolah_id": 319,
       "sekolah": "SMP NEGERI 19",
-      "total": 50,
+      "peserta": 105,
       "tertinggi": 110.2,
-      "terendah": 103.04
+      "cutoff": 82.36
     },
     {
       "sekolah_id": 330,
       "sekolah": "SMP NEGERI 30",
-      "total": 50,
+      "peserta": 96,
       "tertinggi": 110.12,
-      "terendah": 104.46
+      "cutoff": 81.74
     },
     {
       "sekolah_id": 304,
       "sekolah": "SMP NEGERI 4",
-      "total": 50,
+      "peserta": 85,
       "tertinggi": 109.26,
-      "terendah": 100.44
+      "cutoff": 88.31
     },
     {
       "sekolah_id": 313,
       "sekolah": "SMP NEGERI 13",
-      "total": 50,
+      "peserta": 101,
       "tertinggi": 109.18,
-      "terendah": 102.88
+      "cutoff": 86.65
     },
     {
       "sekolah_id": 314,
       "sekolah": "SMP NEGERI 14",
-      "total": 50,
+      "peserta": 140,
       "tertinggi": 108.96,
-      "terendah": 102.67
+      "cutoff": 79.9
     },
     {
       "sekolah_id": 311,
       "sekolah": "SMP NEGERI 11",
-      "total": 50,
+      "peserta": 119,
       "tertinggi": 108.8,
-      "terendah": 98.1
+      "cutoff": 78.4
     },
     {
       "sekolah_id": 334,
       "sekolah": "SMP NEGERI 34",
-      "total": 50,
+      "peserta": 140,
       "tertinggi": 108.6,
-      "terendah": 99.5
+      "cutoff": 80.22
     },
     {
       "sekolah_id": 327,
       "sekolah": "SMP NEGERI 27",
-      "total": 50,
+      "peserta": 122,
       "tertinggi": 108.38,
-      "terendah": 100.74
+      "cutoff": 85.46
     },
     {
       "sekolah_id": 339,
       "sekolah": "SMP NEGERI 39",
-      "total": 50,
+      "peserta": 106,
       "tertinggi": 108.06,
-      "terendah": 99.01
+      "cutoff": 87.44
     },
     {
       "sekolah_id": 342,
       "sekolah": "SMP NEGERI 42",
-      "total": 50,
+      "peserta": 91,
       "tertinggi": 107.9,
-      "terendah": 99.62
+      "cutoff": 80.9
     },
     {
       "sekolah_id": 333,
       "sekolah": "SMP NEGERI 33",
-      "total": 50,
+      "peserta": 129,
       "tertinggi": 107.29,
-      "terendah": 97.78
+      "cutoff": 69.4
     },
     {
       "sekolah_id": 324,
       "sekolah": "SMP NEGERI 24",
-      "total": 50,
+      "peserta": 111,
       "tertinggi": 107.04,
-      "terendah": 99.04
+      "cutoff": 85
     },
     {
       "sekolah_id": 341,
       "sekolah": "SMP NEGERI 41",
-      "total": 50,
+      "peserta": 101,
       "tertinggi": 106.3,
-      "terendah": 96.88
+      "cutoff": 82.52
     },
     {
       "sekolah_id": 331,
       "sekolah": "SMP NEGERI 31",
-      "total": 50,
+      "peserta": 118,
       "tertinggi": 105.34,
-      "terendah": 98.45
+      "cutoff": 86.08
     },
     {
       "sekolah_id": 340,
       "sekolah": "SMP NEGERI 40",
-      "total": 50,
+      "peserta": 104,
       "tertinggi": 104.8,
-      "terendah": 99.4
+      "cutoff": 84.18
     },
     {
       "sekolah_id": 325,
       "sekolah": "SMP NEGERI 25",
-      "total": 50,
+      "peserta": 71,
       "tertinggi": 103.92,
-      "terendah": 94.76
+      "cutoff": 81.12
     },
     {
       "sekolah_id": 335,
       "sekolah": "SMP NEGERI 35",
-      "total": 40,
+      "peserta": 40,
       "tertinggi": 103.84,
-      "terendah": 83.88
+      "cutoff": 83.88
     },
     {
       "sekolah_id": 310,
       "sekolah": "SMP NEGERI 10",
-      "total": 50,
+      "peserta": 115,
       "tertinggi": 103.06,
-      "terendah": 93.02
+      "cutoff": 73.8
     },
     {
       "sekolah_id": 336,
       "sekolah": "SMP NEGERI 36",
-      "total": 50,
+      "peserta": 103,
       "tertinggi": 102.94,
-      "terendah": 93.92
+      "cutoff": 78.41
     },
     {
       "sekolah_id": 326,
       "sekolah": "SMP NEGERI 26",
-      "total": 50,
+      "peserta": 83,
       "tertinggi": 102.86,
-      "terendah": 93.14
+      "cutoff": 79.02
     },
     {
       "sekolah_id": 332,
       "sekolah": "SMP NEGERI 32",
-      "total": 50,
+      "peserta": 127,
       "tertinggi": 102.54,
-      "terendah": 97.24
+      "cutoff": 83.2
     },
     {
       "sekolah_id": 338,
       "sekolah": "SMP NEGERI 38",
-      "total": 50,
+      "peserta": 54,
       "tertinggi": 102.3,
-      "terendah": 84.44
+      "cutoff": 79.38
     },
     {
       "sekolah_id": 317,
       "sekolah": "SMP NEGERI 17",
-      "total": 50,
+      "peserta": 62,
       "tertinggi": 101.56,
-      "terendah": 88.68
+      "cutoff": 78.48
     },
     {
       "sekolah_id": 337,
       "sekolah": "SMP NEGERI 37",
-      "total": 50,
+      "peserta": 116,
       "tertinggi": 101.56,
-      "terendah": 94.98
+      "cutoff": 77.88
     }
   ]
 }
