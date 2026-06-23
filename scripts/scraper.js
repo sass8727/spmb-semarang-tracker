@@ -1,10 +1,10 @@
 const fs = require("fs");
 
-async function ambilHalaman(sekolah, jalur, offset) {
-  const url =
-    `https://spmb.semarangkota.go.id/smp/listjurnalpendaftaran2/${offset}`;
+const URL =
+  "https://spmb.semarangkota.go.id/smp/listjurnalpendaftaran2";
 
-  const res = await fetch(url, {
+async function getSekolah(id) {
+  const res = await fetch(URL, {
     method: "POST",
     headers: {
       "Content-Type":
@@ -14,108 +14,68 @@ async function ambilHalaman(sekolah, jalur, offset) {
     body: new URLSearchParams({
       per_page: "10",
       cari: "",
-      fsekolah: String(sekolah),
-      rjalur: String(jalur),
+      fsekolah: String(id),
+      rjalur: "3",
       rstatus: "1"
     })
   });
 
-  return await res.text();
-}
+  const html = await res.text();
 
-async function ambilSemuaNilai(sekolah, jalur) {
-  let offset = 0;
-  let semuaNilai = [];
+  const totalMatch = html.match(/Total\s+(\d+)\s+Pendaftar/i);
+  const total = totalMatch ? parseInt(totalMatch[1]) : 0;
 
-  while (true) {
-    const html =
-      await ambilHalaman(sekolah, jalur, offset);
+  const namaMatch = html.match(/<option value=".*?" selected[^>]*>(.*?)<\/option>/i);
 
-    const nilai = [];
+  const sekolah =
+    namaMatch?.[1]?.trim() || `SMP ${id}`;
 
-    const regex =
-      /<td[^>]*>\s*<div[^>]*>\s*([0-9]+\.[0-9]{2})\s*<\/div>/g;
+  const nilai = [
+    ...html.matchAll(/\b(\d{2,3}\.\d{2})\b/g)
+  ]
+    .map(x => parseFloat(x[1]))
+    .filter(x => x > 50);
 
-    let match;
-
-    while ((match = regex.exec(html)) !== null) {
-      nilai.push(parseFloat(match[1]));
-    }
-
-    if (nilai.length === 0) {
-      break;
-    }
-
-    semuaNilai.push(...nilai);
-
-    console.log(
-      sekolah,
-      "offset",
-      offset,
-      "dapat",
-      nilai.length
-    );
-
-    if (nilai.length < 10) {
-      break;
-    }
-
-    offset += 10;
-  }
-
-  return semuaNilai;
+  return {
+    sekolah_id: id,
+    sekolah,
+    peserta: total,
+    tertinggi: nilai.length ? Math.max(...nilai) : null,
+    cutoff: nilai.length ? Math.min(...nilai) : null
+  };
 }
 
 async function run() {
-  const hasil = [];
+  const ranking = [];
 
   for (let sekolah = 301; sekolah <= 343; sekolah++) {
+    try {
+      console.log("Scraping", sekolah);
 
-    const nilai =
-      await ambilSemuaNilai(sekolah, 3);
+      const data = await getSekolah(sekolah);
 
-    hasil.push({
-      sekolah_id: sekolah,
-      sekolah: `SMP NEGERI ${sekolah - 300}`,
-      peserta: nilai.length,
-      tertinggi:
-        nilai.length
-          ? Math.max(...nilai)
-          : null,
-      cutoff:
-        nilai.length
-          ? Math.min(...nilai)
-          : null
-    });
-
-    console.log(
-      sekolah,
-      nilai.length
-    );
+      ranking.push(data);
+    } catch (e) {
+      console.log("ERROR", sekolah);
+    }
   }
 
-  hasil.sort(
-    (a, b) =>
-      (b.tertinggi || 0) -
-      (a.tertinggi || 0)
-  );
+  ranking.sort((a, b) => b.tertinggi - a.tertinggi);
 
-  fs.mkdirSync(
-    "data",
-    { recursive: true }
-  );
+  const result = {
+    updated_at: new Date().toISOString(),
+    jalur: "Prestasi",
+    ranking
+  };
+
+  fs.mkdirSync("data", { recursive: true });
 
   fs.writeFileSync(
     "data/latest.json",
-    JSON.stringify({
-      updated_at:
-        new Date().toISOString(),
-      jalur: "Prestasi",
-      ranking: hasil
-    }, null, 2)
+    JSON.stringify(result, null, 2)
   );
 
-  console.log("SELESAI");
+  console.log("DONE");
 }
 
 run();
