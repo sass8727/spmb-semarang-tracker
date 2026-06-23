@@ -1,9 +1,18 @@
 const fs = require("fs");
 
 const data = {
-  last_update: new Date().toISOString(),
-  status: "running",
-  test: true
+  updated_at: new Date().toISOString(),
+  sekolah: 301,
+  jalur: 1,
+  status: 1,
+  total: 166,
+  sample: [
+    {
+      regno: "301662",
+      nama: "SHINTA DEWI PURNOMO",
+      nilai: 95.56
+    }
+  ]
 };
 
 fs.mkdirSync("data", { recursive: true });
@@ -13,4 +22,4 @@ fs.writeFileSync(
   JSON.stringify(data, null, 2)
 );
 
-console.log("latest.json generated");
+console.log("Data saved");
