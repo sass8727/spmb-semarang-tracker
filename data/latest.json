@@ -1,5 +1,14 @@
 {
-  "last_update": "2026-06-23T04:30:10.883Z",
-  "status": "running",
-  "test": true
+  "updated_at": "2026-06-23T05:46:46.320Z",
+  "sekolah": 301,
+  "jalur": 1,
+  "status": 1,
+  "total": 166,
+  "sample": [
+    {
+      "regno": "301662",
+      "nama": "SHINTA DEWI PURNOMO",
+      "nilai": 95.56
+    }
+  ]
 }
