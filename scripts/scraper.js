@@ -1,39 +1,45 @@
 const fs = require("fs");
 
+const url =
+  "https://spmb.semarangkota.go.id/smp/listjurnalpendaftaran2";
+
 async function run() {
-
-  const params = new URLSearchParams();
-
-  params.append("fsekolah", "301");
-  params.append("rjalur", "3");
-  params.append("rstatus", "1");
-
-  const res = await fetch(
-    "https://spmb.semarangkota.go.id/smp/listjurnalpendaftaran.html",
-    {
-      method: "POST",
-      body: params
-    }
-  );
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type":
+        "application/x-www-form-urlencoded; charset=UTF-8",
+      "X-Requested-With": "XMLHttpRequest"
+    },
+    body: new URLSearchParams({
+      per_page: "50",
+      cari: "",
+      fsekolah: "301",
+      rjalur: "3",
+      rstatus: "1"
+    })
+  });
 
   const html = await res.text();
 
-  const totalMatch = html.match(/Total\\s+(\\d+)\\s+Pendaftar/i);
-
-  const nilaiMatch = [...html.matchAll(/>(\\d+\\.\\d+)</g)];
+  const nilai = [...html.matchAll(/([0-9]{2,3}\.[0-9]{2})/g)]
+    .map(x => parseFloat(x[1]))
+    .filter(x => x > 50);
 
   const data = {
     updated_at: new Date().toISOString(),
-    total: totalMatch ? parseInt(totalMatch[1]) : 0,
-    nilai_tertinggi: nilaiMatch.length
-      ? Math.max(...nilaiMatch.map(x => Number(x[1])))
+    total: nilai.length,
+    nilai_tertinggi: nilai.length
+      ? Math.max(...nilai)
       : null,
-    nilai_terendah: nilaiMatch.length
-      ? Math.min(...nilaiMatch.map(x => Number(x[1])))
+    nilai_terendah: nilai.length
+      ? Math.min(...nilai)
       : null
   };
 
-  fs.mkdirSync("data", { recursive: true });
+  fs.mkdirSync("data", {
+    recursive: true
+  });
 
   fs.writeFileSync(
     "data/latest.json",
