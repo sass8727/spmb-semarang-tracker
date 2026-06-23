@@ -1,138 +1,98 @@
 const fs = require("fs");
 
+const SEKOLAH = [
+  { id: 301, nama: "SMP NEGERI 1" }
+];
+
 async function getPage(sekolahId, offset) {
-  const res = await fetch(
-    "https://spmb.semarangkota.go.id/smp/listjurnalpendaftaran2",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type":
-          "application/x-www-form-urlencoded; charset=UTF-8",
-        "X-Requested-With": "XMLHttpRequest"
-      },
-      body: new URLSearchParams({
-        per_page: "10",
-        cari: "",
-        fsekolah: String(sekolahId),
-        rjalur: "3",
-        rstatus: "1",
-        offset: String(offset)
-      })
-    }
-  );
+  const url =
+    offset === 0
+      ? "https://spmb.semarangkota.go.id/smp/listjurnalpendaftaran2"
+      : `https://spmb.semarangkota.go.id/smp/listjurnalpendaftaran2/${offset}`;
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type":
+        "application/x-www-form-urlencoded; charset=UTF-8",
+      "X-Requested-With": "XMLHttpRequest"
+    },
+    body: new URLSearchParams({
+      per_page: "10",
+      cari: "",
+      fsekolah: String(sekolahId),
+      rstatus: "1",
+      rjalur: "3"
+    })
+  });
 
   return await res.text();
 }
 
-async function getKuotaPrestasi(regno, sekolahId) {
-  const res = await fetch(
-    "https://spmb.semarangkota.go.id/smp/popDetil",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type":
-          "application/x-www-form-urlencoded; charset=UTF-8",
-        "X-Requested-With": "XMLHttpRequest"
-      },
-      body: new URLSearchParams({
-        regno: String(regno),
-        opt: String(sekolahId)
-      })
-    }
-  );
-
-  const html = await res.text();
-
-  const m = html.match(/1\s*dari\s*(\d+)/i);
-
-  if (!m) return null;
-
-  return parseInt(m[1]);
-}
-
-async function scrapeSekolah(id) {
+async function scrapeSekolah(sekolah) {
   let offset = 0;
   let peserta = [];
 
   while (true) {
-    const html = await getPage(id, offset);
+    const html = await getPage(sekolah.id, offset);
 
-    const regnos =
-      [...html.matchAll(/class="REGNO"[^>]*>(\d+)/g)]
-      .map(x => x[1]);
+    const rows = [
+      ...html.matchAll(
+        /class="REGNO"[^>]*>(\d+)<\/span>[\s\S]*?(\d+\.\d{2})/g
+      )
+    ];
 
-    const nilai =
-      [...html.matchAll(/(\d+\.\d{2})/g)]
-      .map(x => parseFloat(x[1]))
-      .filter(x => x > 50);
+    console.log(
+      `${sekolah.nama} offset=${offset} rows=${rows.length}`
+    );
 
-    for (let i = 0; i < Math.min(regnos.length, nilai.length); i++) {
+    if (rows.length === 0) break;
+
+    for (const row of rows) {
       peserta.push({
-        regno: regnos[i],
-        nilai: nilai[i]
+        regno: row[1],
+        nilai: parseFloat(row[2])
       });
     }
 
-    console.log(
-      `SMP ${id} offset=${offset} data=${regnos.length}`
-    );
-
-    if (regnos.length < 10) break;
+    if (rows.length < 10) break;
 
     offset += 10;
+
+    await new Promise((r) => setTimeout(r, 300));
   }
 
   peserta.sort((a, b) => b.nilai - a.nilai);
 
-  if (!peserta.length) return null;
-
-  const kuota = await getKuotaPrestasi(
-    peserta[0].regno,
-    id
-  );
-
-  let cutoff = null;
-
-  if (kuota && peserta.length >= kuota) {
-    cutoff = peserta[kuota - 1].nilai;
-  }
-
   return {
-    sekolah: `SMP NEGERI ${id}`,
+    sekolah: sekolah.nama,
     peserta: peserta.length,
-    tertinggi: peserta[0].nilai,
-    kuota_prestasi: kuota,
-    cutoff
+    tertinggi: peserta[0]?.nilai ?? 0,
+    cutoff: peserta[peserta.length - 1]?.nilai ?? 0
   };
 }
 
-(async () => {
-  const ranking = [];
+async function run() {
+  const hasil = [];
 
-  for (let id = 301; id <= 343; id++) {
-    const data = await scrapeSekolah(id);
-
-    if (data) ranking.push(data);
+  for (const sekolah of SEKOLAH) {
+    const data = await scrapeSekolah(sekolah);
+    hasil.push(data);
   }
 
-  ranking.sort(
-    (a, b) => (b.cutoff || 0) - (a.cutoff || 0)
-  );
+  const output = {
+    updated_at: new Date().toISOString(),
+    ranking: hasil
+  };
 
   fs.mkdirSync("data", { recursive: true });
 
   fs.writeFileSync(
     "data/latest.json",
-    JSON.stringify(
-      {
-        updated_at: new Date().toISOString(),
-        jalur: "Prestasi",
-        ranking
-      },
-      null,
-      2
-    )
+    JSON.stringify(output, null, 2)
   );
 
   console.log("DONE");
-})();
+}
+
+run();
