@@ -1,21 +1,308 @@
 {
-  "updated_at": "2026-06-23T06:20:14.334Z",
-  "sekolah": "SMP NEGERI 1",
-  "sekolah_id": 301,
+  "updated_at": "2026-06-23T06:23:49.666Z",
   "jalur": "Prestasi",
-  "total": 50,
-  "nilai_tertinggi": 117.73,
-  "nilai_terendah": 111.31,
-  "sampel_nilai": [
-    117.73,
-    116.83,
-    116.58,
-    115.66,
-    115.02,
-    114.84,
-    114.82,
-    114.76,
-    114.66,
-    114.47
+  "jumlah_sekolah": 43,
+  "ranking": [
+    {
+      "sekolah_id": 302,
+      "sekolah": "SMP NEGERI 2",
+      "total": 50,
+      "tertinggi": 118.6,
+      "terendah": 112.18
+    },
+    {
+      "sekolah_id": 301,
+      "sekolah": "SMP NEGERI 1",
+      "total": 50,
+      "tertinggi": 117.73,
+      "terendah": 111.31
+    },
+    {
+      "sekolah_id": 321,
+      "sekolah": "SMP NEGERI 21",
+      "total": 50,
+      "tertinggi": 115.58,
+      "terendah": 109.54
+    },
+    {
+      "sekolah_id": 305,
+      "sekolah": "SMP NEGERI 5",
+      "total": 50,
+      "tertinggi": 115.4,
+      "terendah": 108.3
+    },
+    {
+      "sekolah_id": 318,
+      "sekolah": "SMP NEGERI 18",
+      "total": 50,
+      "tertinggi": 115.12,
+      "terendah": 106.54
+    },
+    {
+      "sekolah_id": 309,
+      "sekolah": "SMP NEGERI 9",
+      "total": 50,
+      "tertinggi": 114.56,
+      "terendah": 109.16
+    },
+    {
+      "sekolah_id": 322,
+      "sekolah": "SMP NEGERI 22",
+      "total": 50,
+      "tertinggi": 114.1,
+      "terendah": 105.18
+    },
+    {
+      "sekolah_id": 303,
+      "sekolah": "SMP NEGERI 3",
+      "total": 50,
+      "tertinggi": 112.74,
+      "terendah": 106.56
+    },
+    {
+      "sekolah_id": 316,
+      "sekolah": "SMP NEGERI 16",
+      "total": 50,
+      "tertinggi": 112.56,
+      "terendah": 104.88
+    },
+    {
+      "sekolah_id": 308,
+      "sekolah": "SMP NEGERI 8",
+      "total": 50,
+      "tertinggi": 112.4,
+      "terendah": 102.15
+    },
+    {
+      "sekolah_id": 307,
+      "sekolah": "SMP NEGERI 7",
+      "total": 50,
+      "tertinggi": 111.95,
+      "terendah": 102.24
+    },
+    {
+      "sekolah_id": 323,
+      "sekolah": "SMP NEGERI 23",
+      "total": 50,
+      "tertinggi": 111.94,
+      "terendah": 104.5
+    },
+    {
+      "sekolah_id": 343,
+      "sekolah": "SMP NEGERI 43",
+      "total": 50,
+      "tertinggi": 111.82,
+      "terendah": 101.06
+    },
+    {
+      "sekolah_id": 329,
+      "sekolah": "SMP NEGERI 29",
+      "total": 50,
+      "tertinggi": 111.8,
+      "terendah": 105.18
+    },
+    {
+      "sekolah_id": 306,
+      "sekolah": "SMP NEGERI 6",
+      "total": 50,
+      "tertinggi": 111.52,
+      "terendah": 104.28
+    },
+    {
+      "sekolah_id": 320,
+      "sekolah": "SMP NEGERI 20",
+      "total": 50,
+      "tertinggi": 111.12,
+      "terendah": 97.8
+    },
+    {
+      "sekolah_id": 328,
+      "sekolah": "SMP NEGERI 28",
+      "total": 50,
+      "tertinggi": 111.06,
+      "terendah": 94.96
+    },
+    {
+      "sekolah_id": 312,
+      "sekolah": "SMP NEGERI 12",
+      "total": 50,
+      "tertinggi": 110.92,
+      "terendah": 103.86
+    },
+    {
+      "sekolah_id": 315,
+      "sekolah": "SMP NEGERI 15",
+      "total": 50,
+      "tertinggi": 110.52,
+      "terendah": 105.58
+    },
+    {
+      "sekolah_id": 319,
+      "sekolah": "SMP NEGERI 19",
+      "total": 50,
+      "tertinggi": 110.2,
+      "terendah": 103.04
+    },
+    {
+      "sekolah_id": 330,
+      "sekolah": "SMP NEGERI 30",
+      "total": 50,
+      "tertinggi": 110.12,
+      "terendah": 104.46
+    },
+    {
+      "sekolah_id": 304,
+      "sekolah": "SMP NEGERI 4",
+      "total": 50,
+      "tertinggi": 109.26,
+      "terendah": 100.44
+    },
+    {
+      "sekolah_id": 313,
+      "sekolah": "SMP NEGERI 13",
+      "total": 50,
+      "tertinggi": 109.18,
+      "terendah": 102.88
+    },
+    {
+      "sekolah_id": 314,
+      "sekolah": "SMP NEGERI 14",
+      "total": 50,
+      "tertinggi": 108.96,
+      "terendah": 102.67
+    },
+    {
+      "sekolah_id": 311,
+      "sekolah": "SMP NEGERI 11",
+      "total": 50,
+      "tertinggi": 108.8,
+      "terendah": 98.1
+    },
+    {
+      "sekolah_id": 334,
+      "sekolah": "SMP NEGERI 34",
+      "total": 50,
+      "tertinggi": 108.6,
+      "terendah": 99.5
+    },
+    {
+      "sekolah_id": 327,
+      "sekolah": "SMP NEGERI 27",
+      "total": 50,
+      "tertinggi": 108.38,
+      "terendah": 100.74
+    },
+    {
+      "sekolah_id": 339,
+      "sekolah": "SMP NEGERI 39",
+      "total": 50,
+      "tertinggi": 108.06,
+      "terendah": 99.01
+    },
+    {
+      "sekolah_id": 342,
+      "sekolah": "SMP NEGERI 42",
+      "total": 50,
+      "tertinggi": 107.9,
+      "terendah": 99.62
+    },
+    {
+      "sekolah_id": 333,
+      "sekolah": "SMP NEGERI 33",
+      "total": 50,
+      "tertinggi": 107.29,
+      "terendah": 97.78
+    },
+    {
+      "sekolah_id": 324,
+      "sekolah": "SMP NEGERI 24",
+      "total": 50,
+      "tertinggi": 107.04,
+      "terendah": 99.04
+    },
+    {
+      "sekolah_id": 341,
+      "sekolah": "SMP NEGERI 41",
+      "total": 50,
+      "tertinggi": 106.3,
+      "terendah": 96.88
+    },
+    {
+      "sekolah_id": 331,
+      "sekolah": "SMP NEGERI 31",
+      "total": 50,
+      "tertinggi": 105.34,
+      "terendah": 98.45
+    },
+    {
+      "sekolah_id": 340,
+      "sekolah": "SMP NEGERI 40",
+      "total": 50,
+      "tertinggi": 104.8,
+      "terendah": 99.4
+    },
+    {
+      "sekolah_id": 325,
+      "sekolah": "SMP NEGERI 25",
+      "total": 50,
+      "tertinggi": 103.92,
+      "terendah": 94.76
+    },
+    {
+      "sekolah_id": 335,
+      "sekolah": "SMP NEGERI 35",
+      "total": 40,
+      "tertinggi": 103.84,
+      "terendah": 83.88
+    },
+    {
+      "sekolah_id": 310,
+      "sekolah": "SMP NEGERI 10",
+      "total": 50,
+      "tertinggi": 103.06,
+      "terendah": 93.02
+    },
+    {
+      "sekolah_id": 336,
+      "sekolah": "SMP NEGERI 36",
+      "total": 50,
+      "tertinggi": 102.94,
+      "terendah": 93.92
+    },
+    {
+      "sekolah_id": 326,
+      "sekolah": "SMP NEGERI 26",
+      "total": 50,
+      "tertinggi": 102.86,
+      "terendah": 93.14
+    },
+    {
+      "sekolah_id": 332,
+      "sekolah": "SMP NEGERI 32",
+      "total": 50,
+      "tertinggi": 102.54,
+      "terendah": 97.24
+    },
+    {
+      "sekolah_id": 338,
+      "sekolah": "SMP NEGERI 38",
+      "total": 50,
+      "tertinggi": 102.3,
+      "terendah": 84.44
+    },
+    {
+      "sekolah_id": 317,
+      "sekolah": "SMP NEGERI 17",
+      "total": 50,
+      "tertinggi": 101.56,
+      "terendah": 88.68
+    },
+    {
+      "sekolah_id": 337,
+      "sekolah": "SMP NEGERI 37",
+      "total": 50,
+      "tertinggi": 101.56,
+      "terendah": 94.98
+    }
   ]
 }
