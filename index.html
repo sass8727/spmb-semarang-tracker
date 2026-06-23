@@ -1,10 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SPMB Semarang Tracker</title>
+<meta charset="utf-8">
+<title>SPMB Semarang Tracker</title>
+
+<style>
+body{
+    font-family: Arial;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:8px;
+}
+
+th{
+    background:#1976d2;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f5f5f5;
+}
+
+.updated{
+    margin-bottom:20px;
+    color:#666;
+}
+</style>
 </head>
+
 <body>
-  <h1>SPMB Semarang Tracker</h1>
-  <p>Loading...</p>
+
+<h1>🏆 SPMB Semarang Tracker</h1>
+
+<div id="updated"></div>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Sekolah</th>
+<th>Peserta</th>
+<th>Tertinggi</th>
+<th>Cutoff</th>
+</tr>
+</thead>
+
+<tbody id="table"></tbody>
+</table>
+
+<script>
+fetch("./data/latest.json")
+.then(r=>r.json())
+.then(data=>{
+
+document.getElementById("updated").innerHTML =
+"Update : " + data.updated_at;
+
+let html="";
+
+data.ranking.forEach((x,i)=>{
+
+html += `
+<tr>
+<td>${i+1}</td>
+<td>${x.sekolah}</td>
+<td>${x.peserta}</td>
+<td>${x.tertinggi}</td>
+<td>${x.cutoff}</td>
+</tr>
+`;
+
+});
+
+document.getElementById("table").innerHTML = html;
+
+});
+</script>
+
 </body>
 </html>
