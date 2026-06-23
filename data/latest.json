@@ -1,6 +1,21 @@
 {
-  "updated_at": "2026-06-23T06:11:45.835Z",
-  "total": 50,
-  "nilai_tertinggi": 117.73,
-  "nilai_terendah": 111.31
+  "updated_at": "2026-06-23T06:16:16.547Z",
+  "sekolah": "SMP NEGERI 1",
+  "sekolah_id": 301,
+  "jalur": "Prestasi",
+  "total": 161,
+  "nilai_tertinggi": 314395,
+  "nilai_terendah": 111.31,
+  "sampel_nilai": [
+    301662,
+    301662,
+    117.73,
+    304258,
+    304258,
+    116.83,
+    310450,
+    310450,
+    116.58,
+    309985
+  ]
 }
