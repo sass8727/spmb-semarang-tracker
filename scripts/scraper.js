@@ -1,27 +1,35 @@
 const fs = require("fs");
 
-const URL =
-  "https://spmb.semarangkota.go.id/smp/listjurnalpendaftaran2";
+async function ambilHalaman(sekolah, jalur, offset) {
+  const url =
+    `https://spmb.semarangkota.go.id/smp/listjurnalpendaftaran2/${offset}`;
 
-async function ambilDataSekolah(idSekolah) {
-  try {
-    const res = await fetch(URL, {
-      method: "POST",
-      headers: {
-        "Content-Type":
-          "application/x-www-form-urlencoded; charset=UTF-8",
-        "X-Requested-With": "XMLHttpRequest"
-      },
-      body: new URLSearchParams({
-        per_page: "50",
-        cari: "",
-        fsekolah: String(idSekolah),
-        rjalur: "3",
-        rstatus: "1"
-      })
-    });
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type":
+        "application/x-www-form-urlencoded; charset=UTF-8",
+      "X-Requested-With": "XMLHttpRequest"
+    },
+    body: new URLSearchParams({
+      per_page: "10",
+      cari: "",
+      fsekolah: String(sekolah),
+      rjalur: String(jalur),
+      rstatus: "1"
+    })
+  });
 
-    const html = await res.text();
+  return await res.text();
+}
+
+async function ambilSemuaNilai(sekolah, jalur) {
+  let offset = 0;
+  let semuaNilai = [];
+
+  while (true) {
+    const html =
+      await ambilHalaman(sekolah, jalur, offset);
 
     const nilai = [];
 
@@ -34,54 +42,77 @@ async function ambilDataSekolah(idSekolah) {
       nilai.push(parseFloat(match[1]));
     }
 
-    return {
-      sekolah_id: idSekolah,
-      sekolah: `SMP NEGERI ${idSekolah - 300}`,
-      total: nilai.length,
-      tertinggi: nilai.length
-        ? Math.max(...nilai)
-        : null,
-      terendah: nilai.length
-        ? Math.min(...nilai)
-        : null
-    };
-  } catch (err) {
-    return {
-      sekolah_id: idSekolah,
-      error: err.message
-    };
+    if (nilai.length === 0) {
+      break;
+    }
+
+    semuaNilai.push(...nilai);
+
+    console.log(
+      sekolah,
+      "offset",
+      offset,
+      "dapat",
+      nilai.length
+    );
+
+    if (nilai.length < 10) {
+      break;
+    }
+
+    offset += 10;
   }
+
+  return semuaNilai;
 }
 
 async function run() {
   const hasil = [];
 
-  for (let id = 301; id <= 343; id++) {
-    console.log("Scan sekolah:", id);
+  for (let sekolah = 301; sekolah <= 343; sekolah++) {
 
-    const data = await ambilDataSekolah(id);
+    const nilai =
+      await ambilSemuaNilai(sekolah, 3);
 
-    hasil.push(data);
+    hasil.push({
+      sekolah_id: sekolah,
+      sekolah: `SMP NEGERI ${sekolah - 300}`,
+      peserta: nilai.length,
+      tertinggi:
+        nilai.length
+          ? Math.max(...nilai)
+          : null,
+      cutoff:
+        nilai.length
+          ? Math.min(...nilai)
+          : null
+    });
+
+    console.log(
+      sekolah,
+      nilai.length
+    );
   }
 
-  hasil.sort((a, b) => {
-    return (b.tertinggi || 0) - (a.tertinggi || 0);
-  });
+  hasil.sort(
+    (a, b) =>
+      (b.tertinggi || 0) -
+      (a.tertinggi || 0)
+  );
 
-  const output = {
-    updated_at: new Date().toISOString(),
-    jalur: "Prestasi",
-    jumlah_sekolah: hasil.length,
-    ranking: hasil
-  };
-
-  fs.mkdirSync("data", {
-    recursive: true
-  });
+  fs.mkdirSync(
+    "data",
+    { recursive: true }
+  );
 
   fs.writeFileSync(
     "data/latest.json",
-    JSON.stringify(output, null, 2)
+    JSON.stringify({
+      updated_at:
+        new Date().toISOString(),
+      jalur: "Prestasi",
+      ranking: hasil
+    }, null, 2)
   );
 
   console.log("SELESAI");
