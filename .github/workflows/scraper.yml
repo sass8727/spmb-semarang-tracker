@@ -5,15 +5,29 @@ on:
   schedule:
     - cron: "*/30 * * * *"
 
+permissions:
+  contents: write
+
 jobs:
-  test:
+  scrape:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Test Workflow
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Scraper
+        run: node scripts/scraper.js
+
+      - name: Commit Data
         run: |
-          echo "SPMB Tracker Running"
-          date
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git add data/latest.json
+
+          git diff --staged --quiet || git commit -m "Update data"
+          git push
