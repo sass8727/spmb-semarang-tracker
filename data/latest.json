@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-07-08T09:54:48.687Z",
+  "updated_at": "2026-07-08T11:46:31.733Z",
   "ranking": [
     {
       "sekolah": "SMP NEGERI 1",
-      "peserta": 0,
-      "tertinggi": 0,
-      "cutoff": 0
+      "peserta": 129,
+      "tertinggi": 117.98,
+      "cutoff": 94.6
     }
   ]
 }
